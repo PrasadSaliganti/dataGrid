@@ -1,0 +1,51 @@
+<!-- <table class="table table-bordered">
+    <thead class="table table-dark">
+        <tr>
+            <th>FIRST NAME</th>
+            <th>LAST NAME</th>
+            <th>PHONE</th>
+            <th>E-MAIL</th>
+            <th>COUNTRY</th>
+            <th>ID</th>
+        </tr>
+    </thead>
+
+     table body -->
+    <!-- <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{employee.first_name}}</td>
+        <td>{{employee.last_name}}</td>
+        <td>{{employee.Phone}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.country}}</td>
+        <td>{{employee.id}}</td>
+      </tr>
+    </tbody>
+</table> --> 
+
+<clr-datagrid (clrDgRefresh)= "refresh($event)">
+    
+    <clr-dg-column [clrDgField]="'first_name'">First Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'last_name'">Last Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'Phone'">Phone</clr-dg-column>
+    <clr-dg-column [clrDgField]="'email'">E-mail</clr-dg-column>
+    <clr-dg-column [clrDgField]="'country'" [clrDgColType]="'number'">Country</clr-dg-column>
+    <clr-dg-column>User ID</clr-dg-column>
+  
+    <clr-dg-row *clrDgItems="let employee of employees">
+      <clr-dg-cell>{{employee.first_name}}</clr-dg-cell>
+      <clr-dg-cell>{{employee.last_name}}</clr-dg-cell>
+      <clr-dg-cell>{{employee.Phone}}</clr-dg-cell>
+      <clr-dg-cell>{{employee.email}}</clr-dg-cell>
+      <clr-dg-cell>{{employee.country}}</clr-dg-cell>
+      <clr-dg-cell>{{employee.id}}</clr-dg-cell>
+    
+    </clr-dg-row>
+  
+    <clr-dg-footer>
+        <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="50">
+          <clr-dg-page-size [clrPageSizeOptions]="[5,10,20,50,100]">Users per page</clr-dg-page-size>
+          {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+        </clr-dg-pagination>
+      </clr-dg-footer>
+  </clr-datagrid>
